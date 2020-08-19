@@ -9,14 +9,14 @@ script:
   - docker run -e CI=true rproque/react-test npm test
 
 after_success:
-  - docker build -t multi-client ./client
-  - docker build -t multi-nginx ./nginx
-  - docker build -t multi-server ./server
-  - docker build -t multi-worker ./worker
+  - docker build -t rproque/multi-client ./client
+  - docker build -t rproque/multi-nginx ./nginx
+  - docker build -t rproque/multi-server ./server
+  - docker build -t rproque/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take images and push them to docker hub
-  - docker push multi-client
-  - docker push multi-nginx
-  - docker push multi-server
-  - docker push multi-worker
+  - docker push rproque/multi-client
+  - docker push rproque/multi-nginx
+  - docker push rproque/multi-server
+  - docker push rproque/multi-worker
